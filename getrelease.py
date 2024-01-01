@@ -51,7 +51,7 @@ if __name__ == "__main__":
         run(f"sudo sed -i 's#\"/usr/lib\"##' {speffile}", shell=True)
 
         # add dependency to the first line
-        run(f"sudo sed -i '1iRequires: libappindicator-gtk3-devel' {speffile}", shell=True)
+        run(f"sudo sed -i '1iRequires: libappindicator-gtk3' {speffile}", shell=True)
 
 
         run(f"cd {dir} && sudo rpmbuild --target={task['arch']} --buildroot $(pwd) -bb {basename(speffile)}", shell=True)
