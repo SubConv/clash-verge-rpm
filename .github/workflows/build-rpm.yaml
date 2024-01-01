@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/**
+      - getrelease.py
+      - requirements.txt
   workflow_dispatch:
   release:
     types: [published]
