@@ -24,8 +24,18 @@ jobs:
       - name: Build RPM
         run: |
           python3 getrelease.py
+          # set the filename to env variable
+          export RPM_FILE=$(ls *.rpm)
+          
 
       - name: Upload RPM
         uses: actions/upload-artifact@v3
         with:
           path: ./*.rpm
+
+      - name: Release RPM
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ env.RPM_FILE }}
+          prerelease: true
+
