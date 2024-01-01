@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  release:
+    types: [published]
 
 permissions: write-all
 
@@ -36,9 +38,11 @@ jobs:
           path: ./*.rpm
 
       - name: Release RPM
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ${{ env.RPM_FILE }}
-          tag_name: ${{ github.ref }}
-          prerelease: true
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for file in ./*.rpm; do
+            gh release upload ${{ github.event.release.tag_name }} $file
+          done
 
