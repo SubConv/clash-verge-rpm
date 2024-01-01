@@ -45,13 +45,13 @@ if __name__ == "__main__":
         dir = f"clash-verge-{version}"
         speffile = getoutput(f"ls {dir}/*.spec").split('\t')[0]
 
-        run(f"sed -i 's#\"/usr\"##' {speffile}", shell=True)
-        run(f"sed -i 's#\"/usr/share\"##' {speffile}", shell=True)
-        run(f"sed -i 's#\"/usr/bin\"##' {speffile}", shell=True)
-        run(f"sed -i 's#\"/usr/lib\"##' {speffile}", shell=True)
+        run(f"sudo sed -i 's#\"/usr\"##' {speffile}", shell=True)
+        run(f"sudo sed -i 's#\"/usr/share\"##' {speffile}", shell=True)
+        run(f"sudo sed -i 's#\"/usr/bin\"##' {speffile}", shell=True)
+        run(f"sudo sed -i 's#\"/usr/lib\"##' {speffile}", shell=True)
 
         # add dependency to the first line
-        run(f"sed -i '1iRequires: libappindicator-gtk3-devel' {speffile}", shell=True)
+        run(f"sudo sed -i '1iRequires: libappindicator-gtk3-devel' {speffile}", shell=True)
 
 
         run(f"cd {dir} && sudo rpmbuild --target={task['arch']} --buildroot $(pwd) -bb {basename(speffile)}", shell=True)
