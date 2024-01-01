@@ -25,6 +25,6 @@ jobs:
           python3 getrelease.py
 
       - name: Upload RPM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          path: *.rpm
+          path: ./*.rpm
