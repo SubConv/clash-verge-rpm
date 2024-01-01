@@ -1,0 +1,4 @@
+__pycache__
+*.deb
+*.rpm
+test.py
