@@ -37,5 +37,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ env.RPM_FILE }}
+          tag_name: ${{ github.ref }}
           prerelease: true
 
