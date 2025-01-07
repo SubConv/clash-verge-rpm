@@ -1,2 +1,1 @@
-Using alien to convert the deb package from <https://github.com/MetaCubeX/clash-verge> to rpm package.
-**only tested on Fedora 39 x86_64**
+# Please use [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev) instead.
